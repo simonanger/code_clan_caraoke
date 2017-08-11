@@ -61,11 +61,17 @@ class TestRoom < Minitest::Test
   def test_room_full
     guest1 = Guest.new('Simon')
     guest2 = Guest.new('Maisie')
-    guest3 = Guest.new('Katie')
-    @room2.add_guest(guest1)
-    @room2.add_guest(guest2)
-    @room2.add_guest(guest3)
-    result = @room2.full_room
+    @room3.add_guest(guest1)
+    @room3.add_guest(guest2)
+    assert_equal("This room is full. Please leave", @room3.full_room)
+  end
+
+  def test_room_not_full
+    guest1 = Guest.new('Simon')
+    guest2 = Guest.new('Maisie')
+    @room1.add_guest(guest1)
+    @room1.add_guest(guest2)
+    assert_equal("There is still space in the room", @room1.full_room)
   end
 
 
