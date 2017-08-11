@@ -31,6 +31,10 @@ class Room
     end
   end
 
+  def can_guest_afford( guest )
+    return guest.money >= @cost
+  end
+
 
 
 end

@@ -1,9 +1,10 @@
 class Guest
 
-  attr_accessor(:name)
+  attr_accessor(:name, :money)
 
-  def initialize(name)
+  def initialize(name, money)
     @name = name
+    @money = money
 
   end
 
