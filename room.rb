@@ -20,4 +20,8 @@ class Room
   def take_song( song )
     @songlist.push( song )
   end
+
+  def full_room
+
+  end
 end

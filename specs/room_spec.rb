@@ -54,13 +54,18 @@ class TestRoom < Minitest::Test
   end
 
   def test_songs_added_to_list
-    result = @room1.take_song(@song1)
-    assert_equal("Shoulders of Giants", result)
+    @room1.take_song(@song1)
+    assert_equal("Shoulders of Giants", @room1.songlist[0].song_name)
   end
 
-  def test_songs_added_to_list
-    @room1.take_song(@song1)
-    assert_equal("Shoulders of Giants", @room1.songlist[0].name)
+  def test_room_full
+    guest1 = Guest.new('Simon')
+    guest2 = Guest.new('Maisie')
+    guest3 = Guest.new('Katie')
+    @room2.add_guest(guest1)
+    @room2.add_guest(guest2)
+    @room2.add_guest(guest3)
+    result = @room2.full_room
   end
 
 
