@@ -22,6 +22,14 @@ class Room
   end
 
   def full_room
-
+    if @guestlist.count > @capacity
+      return "This room is full. Please leave"
+      @capacity.pop()
+    else
+      return "There is still space in the room"
+    end
   end
+
+
+
 end
