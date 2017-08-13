@@ -88,8 +88,9 @@ class TestRoom < Minitest::Test
   def test_favourite_song
     guest1 = Guest.new('Simon', 20, @song1.song_name)
     @room1.take_song(@song1)
+    @room1.take_song(@song2)
     @room1.add_guest(guest1)
-    result = @room1.favourite_song(guest1)
+    result = @room1.favourite_song_first(guest1)
     assert_equal("Wow", result)
   end
 
@@ -97,8 +98,25 @@ class TestRoom < Minitest::Test
     guest1 = Guest.new('Simon', 20, @song1.song_name)
     @room1.take_song(@song2)
     @room1.add_guest(guest1)
-    result = @room1.favourite_song(guest1)
+    result = @room1.favourite_song_first(guest1)
     assert_equal("These look ok", result)
+  end
+
+  def test_favourite_song_in_list
+    guest1 = Guest.new('Simon', 20, @song1.song_name)
+    @room1.take_song(@song1)
+    @room1.take_song(@song2)
+    @room1.add_guest(guest1)
+    result = @room1.favourite_song_in_list(guest1)
+    assert_equal("Wow", result)
+  end
+
+  def test_room_count_fees
+    guest1 = Guest.new('Simon', 20, @song1.song_name)
+    guest2 = Guest.new('Maisie', 50, @song2.song_name)
+    @room1.add_guest(guest1)
+    @room1.add_guest(guest2)
+    assert_equal(100, @room1.spend_total)
   end
 
 

@@ -35,12 +35,23 @@ class Room
     return guest.money >= @cost
   end
 
-  def favourite_song( guest )
+  def favourite_song_first( guest )
     if @songlist[0].song_name == guest.favourite_song
-    return "Wow"
+      return "Wow"
   else
-    return "These look ok"
+      return "These look ok"
     end
+  end
+
+  def favourite_song_in_list(guest)
+    for song in @songlist do
+      @song_name == guest.favourite_song
+      return "Wow"
+    end
+  end
+
+  def spend_total
+    @guestlist.count * @cost
   end
 
 end
