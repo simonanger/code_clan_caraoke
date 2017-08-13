@@ -38,8 +38,8 @@ class TestRoom < Minitest::Test
   end
 
   def test_person_can_leave_room
-    guest1 = Guest.new('Simon', 20)
-    guest2 = Guest.new('Maisie', 50)
+    guest1 = Guest.new('Simon', 20, @song1.song_name)
+    guest2 = Guest.new('Maisie', 50, @song2.song_name)
     @room2.add_guest(guest1)
     @room2.add_guest(guest2)
     @room2.leave_room(guest1)
@@ -58,31 +58,41 @@ class TestRoom < Minitest::Test
   end
 
   def test_room_full
-    guest1 = Guest.new('Simon', 20)
-    guest2 = Guest.new('Maisie', 50)
+    guest1 = Guest.new('Simon', 20, @song1.song_name)
+    guest2 = Guest.new('Maisie', 50, @song2.song_name)
     @room3.add_guest(guest1)
     @room3.add_guest(guest2)
     assert_equal("This room is full. Please leave", @room3.full_room)
   end
 
   def test_room_not_full
-    guest1 = Guest.new('Simon', 20)
-    guest2 = Guest.new('Maisie', 50)
+    guest1 = Guest.new('Simon', 20, @song1.song_name)
+    guest2 = Guest.new('Maisie', 50, @song2.song_name)
     @room1.add_guest(guest1)
     @room1.add_guest(guest2)
     assert_equal("There is still space in the room", @room1.full_room)
   end
 
   def test_guest_can_afford
-    guest = Guest.new('Simon', 80)
+    guest = Guest.new('Simon', 80, @song1.song_name)
     granted = @room1.can_guest_afford(guest)
     assert_equal(true, granted)
   end
 
   def test_guest_cannot_afford
-    guest = Guest.new('Katie', 20)
+    guest = Guest.new('Katie', 20, "Red Giant")
     denied = @room1.can_guest_afford(guest)
     assert_equal(false, denied)
   end
+
+  def test_favourite_song
+    guest1 = Guest.new('Simon', 20, @song1.song_name)
+    @room1.take_song(@song1)
+    @room1.add_guest(guest1)
+    result = @room1.favourite_song(guest1)
+    assert_equal("Wow", result)
+  end
+
+
 
 end

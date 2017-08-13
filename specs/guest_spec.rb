@@ -8,9 +8,9 @@ class GuestTest < Minitest::Test
 
   def setup()
 
-    @guest1 = Guest.new("Simon", 20)
-    @guest2 = Guest.new("Maisie", 50)
-    @guest3 = Guest.new("Katie", 20)
+    @guest1 = Guest.new("Simon", 20, "Shoulders of Giantes")
+    @guest2 = Guest.new("Maisie", 50, "Nothing")
+    @guest3 = Guest.new("Katie", 20, "Red Giant")
 
   end
 
