@@ -59,4 +59,8 @@ class Room
     @drinks_purchased.push(drink)
   end
 
+  def drink_spend
+   @drinks_purchased.count * 3.50
+  end
+
 end
