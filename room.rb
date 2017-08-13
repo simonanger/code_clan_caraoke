@@ -1,6 +1,6 @@
 class Room
 
-  attr_accessor(:number, :capacity, :guestlist, :songlist, :cost)
+  attr_accessor(:number, :capacity, :guestlist, :songlist, :cost, :drinks_purchased)
 
   def initialize(number, capacity, cost)
     @number = number
@@ -8,6 +8,7 @@ class Room
     @cost = cost
     @guestlist = []
     @songlist = []
+    @drinks_purchased = []
   end
 
   def add_guest( guest )
@@ -52,6 +53,10 @@ class Room
 
   def spend_total
     @guestlist.count * @cost
+  end
+
+  def add_drink( drink )
+    @drinks_purchased.push(drink)
   end
 
 end

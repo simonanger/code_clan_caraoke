@@ -120,5 +120,11 @@ class TestRoom < Minitest::Test
     assert_equal(100, @room1.spend_total)
   end
 
+  def test_room_count_bar_spend
+    @drink1 = Drink.new( "Gin", 3.50 )
+    result = @room1.add_drink(@drink1)
+    assert_equal(1, result.count)
+
+  end
 
 end

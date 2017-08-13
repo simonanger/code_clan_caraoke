@@ -6,7 +6,6 @@ class Guest
     @name = name
     @money = money
     @favourite_song = favourite_song
-
   end
 
 end

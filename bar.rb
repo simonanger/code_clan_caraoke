@@ -7,5 +7,4 @@ class Drink
     @drink_price = drink_price
   end
 
-
 end

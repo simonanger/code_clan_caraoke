@@ -1,9 +1,7 @@
 require('minitest/autorun')
 require('minitest/rg')
-require_relative('../room.rb')
-require_relative('../guest.rb')
-require_relative('../song.rb')
 require_relative('../bar.rb')
+require_relative('../guest')
 
 class TestBar < MiniTest::Test
 
@@ -21,5 +19,6 @@ class TestBar < MiniTest::Test
     result = @drink2.drink_price
     assert_equal(3, result)
   end
+
 
 end
