@@ -93,6 +93,13 @@ class TestRoom < Minitest::Test
     assert_equal("Wow", result)
   end
 
+  def test_not_favourite_song
+    guest1 = Guest.new('Simon', 20, @song1.song_name)
+    @room1.take_song(@song2)
+    @room1.add_guest(guest1)
+    result = @room1.favourite_song(guest1)
+    assert_equal("These look ok", result)
+  end
 
 
 end
